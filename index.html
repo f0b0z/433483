@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EMOBOOST | FACEIT DESTROYERS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Permanent+Marker&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="landing-page">
+        
+        <header>
+            <div class="header-left">
+                <div class="logo" onclick="location.reload()">
+                    <h1>EMO<span class="glitch" data-text="BOOST">BOOST</span></h1>
+                    <span class="sub-logo">est. 2019 // undetected</span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="setLanguage('ru', this)">RU</button>
+                    <button class="lang-btn" onclick="setLanguage('en', this)">EN</button>
+                    <button class="lang-btn" onclick="setLanguage('cn', this)">CN</button>
+                </div>
+
+                <button class="login-btn" onclick="openAuthModal()">
+                    <i class="fa-solid fa-user-astronaut"></i> 
+                    <span class="btn-text" data-lang="login_btn">LOGIN</span>
+                </button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="graffiti-text" data-lang="hero_subtitle">DEAD INSIDE MODE: ON</h2>
+                <h1 class="main-title" data-lang="hero_title">МЫ НЕ ПРОЩАЕМ <br> <span class="highlight">ОШИБОК</span></h1>
+                <p class="hero-desc" data-lang="hero_desc">
+                    HLTV демоны в твоем лобби. Уникальный спуфинг железа (IP/HWID).
+                    Винрейт 86%. Мы уничтожаем FACEIT с 2019 года.
+                </p>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-num">10K+</span>
+                        <span class="stat-label" data-lang="stat_orders">ORDERS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">UNDETECTED</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-label">ONLINE</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="ghoul-circle"></div>
+            </div>
+        </section>
+
+        <section id="boosting" class="service-area">
+            <div class="section-header">
+                <h2 data-lang="calc_header">FACEIT CALCULATOR</h2>
+            </div>
+
+            <div class="calc-wrapper">
+                <div class="calc-grid">
+                    <div class="calc-inputs">
+                        <h3 class="panel-title"><i class="fa-solid fa-sliders"></i> <span data-lang="calc_title">НАСТРОЙКА УНИЧТОЖЕНИЯ</span></h3>
+                        
+                        <div class="range-group">
+                            <label>
+                                <span data-lang="curr_elo">Текущий ELO</span> 
+                                <span id="current-elo-val" class="val-display">1000</span>
+                            </label>
+                            <input type="range" min="0" max="4500" value="1000" id="current-elo">
+                        </div>
+
+                        <div class="range-group">
+                            <label>
+                                <span data-lang="des_elo">Желаемый ELO</span> 
+                                <span id="desired-elo-val" class="val-display">2000</span>
+                            </label>
+                            <input type="range" min="0" max="4500" value="2000" id="desired-elo">
+                        </div>
+
+                        <div class="options-grid">
+                            <div class="option-box">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="express" onchange="calculatePrice()">
+                                    <span class="checkmark"></span>
+                                    Express (+40%)
+                                </label>
+                            </div>
+                            <div class="option-box">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="super-express" onchange="calculatePrice()">
+                                    <span class="checkmark"></span>
+                                    Super Express (+60%)
+                                </label>
+                            </div>
+                            <div class="option-box">
+                                <label class="radio-container">
+                                    <input type="radio" name="play-mode" value="piloted" checked onchange="calculatePrice()">
+                                    <span class="radio-mark"></span>
+                                    Piloted (Мы играем)
+                                </label>
+                            </div>
+                            <div class="option-box">
+                                <label class="radio-container">
+                                    <input type="radio" name="play-mode" value="selfplay" onchange="calculatePrice()">
+                                    <span class="radio-mark"></span>
+                                    Self-Play (+40%)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-summary">
+                        <div class="summary-card">
+                            <h4 data-lang="total">ИТОГО К ОПЛАТЕ</h4>
+                            <div class="price-display">
+                                $<span id="final-price">0</span>
+                            </div>
+                            
+                            <div id="min-price-warning" class="warning-msg">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <span data-lang="min_order_warn">MIN ORDER $150. PREMIUM SERVICE ONLY.</span>
+                            </div>
+
+                            <ul class="features-list">
+                                <li><i class="fa-solid fa-check"></i> HLTV Booster (3000+ ELO)</li>
+                                <li><i class="fa-solid fa-check"></i> HWID Spoof (Undetected)</li>
+                                <li><i class="fa-solid fa-check"></i> VPN (Your City IP)</li>
+                            </ul>
+
+                            <button class="order-btn glitch-btn" onclick="openAuthModal()">
+                                <span data-lang="order_btn">ЗАКАЗАТЬ БУСТ</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="links">
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Contacts</a>
+                </div>
+                <p class="disclaimer">
+                    &copy; 2026 EMOBOOST. Not affiliated with FACEIT or Valve. <br>
+                    Designed for real dead insides.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="auth-modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeAuthModal()">×</span>
+            <div class="modal-header">
+                <h2 data-lang="auth_title">SYSTEM ENTRY</h2>
+                <p data-lang="auth_sub">Connect to the Hive</p>
+            </div>
+            
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" placeholder="E-mail" required>
+                </div>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="input-wrapper">
+                    <i class="fa-brands fa-telegram"></i>
+                    <input type="text" id="telegram" placeholder="Telegram (@username)" required>
+                </div>
+
+                <div class="auth-hint">
+                    For Admin Demo: <code>admin@emoboost.com</code> / <code>admin</code>
+                </div>
+
+                <button type="submit" class="order-btn" data-lang="login_submit">CONNECT</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="client-dashboard" class="dashboard-wrapper" style="display:none;">
+        <nav class="dash-nav">
+            <div class="logo">EMO CRM // <span class="green-text">CLIENT</span></div>
+            <button class="logout-btn" onclick="logout()">LOGOUT <i class="fa-solid fa-right-from-bracket"></i></button>
+        </nav>
+        
+        <div class="dash-container">
+            <div class="telegram-alert">
+                <div class="icon-box"><i class="fa-brands fa-telegram"></i></div>
+                <div class="alert-content">
+                    <strong data-lang="tg_warn_title">ВНИМАНИЕ!</strong>
+                    <p data-lang="tg_warn_text">Если вас нет на сайте, включите уведомления. Бустер может запросить Steam Guard.</p>
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <div class="dash-card">
+                    <div class="card-header">
+                        <h3>ACTIVE ORDER #8821</h3>
+                        <span class="status-badge pulse">LIVE</span>
+                    </div>
+                    
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <span>Status:</span> <span class="green-text">BOOSTING</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Booster:</span> <span>m0NESY_v2</span>
+                        </div>
+                    </div>
+
+                    <div class="elo-progress">
+                        <div class="progress-labels">
+                            <span>1450</span>
+                            <span>2000</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card chat-card">
+                    <h3><i class="fa-solid fa-comments"></i> PRIVATE CHAT</h3>
+                    <div class="chat-window" id="chat-window">
+                        <div class="msg system">
+                            <span>System:</span> Order started. Booster connected via VPN (Frankfurt).
+                        </div>
+                        <div class="msg booster">
+                            <span class="name">Booster:</span>
+                            <p>Yo. I'm ready. Give me guard code pls.</p>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Type message...">
+                        <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-dashboard" class="dashboard-wrapper admin-theme" style="display:none;">
+        <nav class="dash-nav">
+            <div class="logo" style="color: var(--admin-red)">ADMIN // <span style="color:#fff">GOD MODE</span></div>
+            <button class="logout-btn" onclick="logout()">EXIT</button>
+        </nav>
+        
+        <div class="dash-container">
+            <div class="stats-overview">
+                <div class="stat-box">
+                    <span class="lbl">ACTIVE ORDERS</span>
+                    <span class="val">14</span>
+                </div>
+                <div class="stat-box">
+                    <span class="lbl">REVENUE (TODAY)</span>
+                    <span class="val green-text">$2,450</span>
+                </div>
+                <div class="stat-box">
+                    <span class="lbl">SPOOF STATUS</span>
+                    <span class="val green-text">SECURE</span>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>CLIENT</th>
+                            <th>GEO / IP</th>
+                            <th>HWID</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#8821</td>
+                            <td>@zxc_ghoul</td>
+                            <td><i class="fa-solid fa-location-arrow"></i> RU, Moscow</td>
+                            <td><span class="spoof-tag">SPOOFED</span></td>
+                            <td><span class="green-text">IN GAME</span></td>
+                            <td><button class="btn-sm">MANAGE</button></td>
+                        </tr>
+                        <tr>
+                            <td>#8822</td>
+                            <td>@tyler_cn</td>
+                            <td><i class="fa-solid fa-location-arrow"></i> CN, Shanghai</td>
+                            <td><span class="spoof-tag">SPOOFED</span></td>
+                            <td><span class="yellow-text">PENDING</span></td>
+                            <td><button class="btn-sm">ASSIGN</button></td>
+                        </tr>
+                        <tr>
+                            <td>#8823</td>
+                            <td>@john_doe</td>
+                            <td><i class="fa-solid fa-location-arrow"></i> DE, Berlin</td>
+                            <td><span class="spoof-tag">SPOOFED</span></td>
+                            <td><span class="green-text">IN GAME</span></td>
+                            <td><button class="btn-sm">MANAGE</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
